@@ -1,57 +1,28 @@
 function angkaPalindrome(num) {
   // you can only write your code here!
-  if (num < 10) {
-    return num + 1;
-  } else {
-    var middle = "";
-    var left = "";
-    var right = "";
-    var numberleft = 0;
-    var numstr = num.toString();
-    if (numstr.length % 2 === 0) {
-      for (var i = 0; i < numstr.length; i++) {
-        if (i < numstr.length / 2) {
-          left += numstr[i];
-        } else {
-          right += numstr[i];
-        }
-      }
-      if (Number(left) < Number(right)) {
-        numberleft = Number(left) + 1;
-        var numleftstr = numberleft.toString();
-        var revleft = "";
-        for (var j = numleftstr.length - 1; j >= 0; j--) {
-          revleft += numleftstr[j];
-        }
-        var palindrome = numleftstr + revleft;
-        return Number(palindrome);
-      } else {
-        var revleft = "";
-        for (var i = left.length - 1; i >= 0; i--) {
-          revleft += left[i];
-        }
-        var palindrome = left + revleft;
-        return Number(palindrome);
-      }
+  function isPalindrome(angka) {
+    var str = angka.toString();
+    var rev = "";
+    for (var i = str.length - 1; i >= 0; i--) {
+      rev += str[i];
+    }
+    if (rev === str) {
+      return true;
     } else {
-      for (var i = 0; i < numstr.length; i++) {
-        if (i === Math.floor(numstr.length / 2)) {
-          middle = numstr[i];
-        } else if (i < Math.floor(numstr.length / 2)) {
-          left += numstr[i];
-        } else {
-          right += numstr[i];
-        }
-      }
-      var midNum = Number(middle) + 1;
-      var revleft = "";
-      for (var i = left.length - 1; i >= 0; i--) {
-        revleft += left[i];
-      }
-      var palindrome = left + midNum + revleft;
-      return Number(palindrome);
+      return false;
     }
   }
+
+  if (isPalindrome(num) === true) {
+    num++;
+    while (isPalindrome(num) === false) {
+      num++;
+    }
+  }
+  while (isPalindrome(num) === false) {
+    num++;
+  }
+  return num;
 }
 
 // TEST CASES

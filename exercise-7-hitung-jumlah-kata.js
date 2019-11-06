@@ -1,16 +1,16 @@
 function hitungJumlahKata(kalimat) {
   // you can only write your code here!
   var count = 0;
-  var adaspasi = false;
+
   for (var i = 0; i < kalimat.length; i++) {
-    if (kalimat[i] !== " " && kalimat[i + 1] === " ") {
+    if (
+      (kalimat[i] !== " " && kalimat[i + 1] === " ") ||
+      (kalimat[i] !== " " && i === kalimat.length - 1)
+    ) {
       count++;
-      adaspasi = true;
     }
   }
-  if (adaspasi === false) {
-    count++;
-  }
+
   return count;
 }
 
